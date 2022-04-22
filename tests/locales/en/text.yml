@@ -1,0 +1,15 @@
+test: test
+members: All members — <code>{count}</code>
+pidor_finding:
+    - |
+        Поиск пидора начат...
+        Тебе уже никуда не уйти)
+        Обход защиты выполнен успешно!
+        Пидор обнаружен... никуда не уходите!
+
+    - |
+        Не стоило вызывать эту команду...
+        Обратного пути нет!
+
+test_var: test {var}
+text_with_cases: "banned {$n user | $n users}"
