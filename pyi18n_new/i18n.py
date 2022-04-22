@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from .models.locale import Locale, LocaleConfig
-from pyi18n.lib.base_class import BaseClass
+from pyi18n_new.lib.base_class import BaseClass
 
 
 @dataclass

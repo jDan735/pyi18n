@@ -4,8 +4,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
 
-from pyi18n.lib.dict_to_object import Locale2Object
-from pyi18n.lib.base_class import BaseClass
+from pyi18n_new.lib.dict_to_object import Locale2Object
+from pyi18n_new.lib.base_class import BaseClass
 
 
 @dataclass
