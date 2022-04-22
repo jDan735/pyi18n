@@ -1,5 +1,5 @@
 import pytest
-from pyi18n import I18N
+from pyi18n_new import I18N
 
 from pathlib import Path
 

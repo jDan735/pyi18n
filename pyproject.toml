@@ -1,12 +1,12 @@
 [tool.poetry]
-name = "pyi18n"
+name = "pyi18n_new"
 version = "1.0.0"
 description = "Advanced i18n realization"
 authors = ["Daniel Zakharov <daniel734@bk.ru>"]
 license = "MIT"
 readme = "README.md"
 
-include = ["pyi18n/lib/*.py"]
+include = ["pyi18n_new/lib/*.py"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
