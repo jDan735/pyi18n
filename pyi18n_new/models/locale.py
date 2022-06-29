@@ -27,6 +27,6 @@ class Locale(BaseClass):
 
     def load(self):
         for file in self.__config.path.glob("[!_]*.yml"):
-            with file.open() as f:
+            with file.open(encoding="utf-8") as f:
                 raw_dict = yaml.safe_load(f.read().replace("%{", "{"))
                 setattr(self, file.stem, Locale2Object(**raw_dict))
