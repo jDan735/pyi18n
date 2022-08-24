@@ -1,26 +1,30 @@
-from typing import Any, Union, Optional
 import yaml
 
 from dataclasses import dataclass
 from pathlib import Path
 
 from .models.locale import Locale, LocaleConfig
-from pyi18n_new.lib.base_class import BaseClass
+from .models.value import TranslateDict, TranslateStr, TranslateList
+from .lib.base_class import BaseClass
 
 
 @dataclass
 class I18N(BaseClass):
     path: Path
     default: str = "en"
+    fallback: str = None
 
     def __post_init__(self):
+        if self.fallback is None:
+            self.fallback = self.default
+
         folders = list(self.path.iterdir())
 
         for folder in folders:
             locale = self.get_locale(folder)
             setattr(self, folder.name, locale)
 
-    def __getattr__(self, name: str) -> Any:
+    def __getattr__(self, name: str) -> TranslateStr | TranslateList | TranslateDict:
         return self[self.default][name]
 
     @property
@@ -34,9 +38,14 @@ class I18N(BaseClass):
 
         with (path / "__init__.yml").open() as file:
             config = yaml.safe_load(file.read())
-            return Locale(LocaleConfig(lang=path.name, path=path, **config))
+            return Locale(LocaleConfig(lang=path.name, path=path, **config), self)
 
-    def translate(self, path: str, lang: Optional[str] = None, **kwargs) -> Union[str, list]:
+    def translate(
+        self,
+        path: str,
+        lang: str = None,
+        **kwargs
+    ) -> TranslateStr | TranslateList | TranslateDict:
         """python-i18n compatible interface"""
 
         section, name = path.split(".")

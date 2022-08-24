@@ -15,12 +15,12 @@ def i18n():
 
 @pytest.fixture()
 def _():
-    return I18N(path=LOCALES_DIR, default="ru").translate
+    return I18N(path=LOCALES_DIR, default="ru", fallback="en").translate
 
 
 @pytest.fixture()
 def __():
-    return I18N(path=LOCALES_DIR, default="ru")
+    return I18N(path=LOCALES_DIR, default="ru", fallback="en")
 
 
 @pytest.fixture()

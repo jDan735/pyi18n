@@ -13,3 +13,4 @@ pidor_finding:
 
 test_var: test {var}
 text_with_cases: "banned {$n user | $n users}"
+fallback_text: oops! this translate on en locale
