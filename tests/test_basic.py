@@ -1,5 +1,6 @@
 def test_languages_count(i18n):
-    assert len(i18n.languages) == 1
+    print(i18n.languages)
+    assert len(i18n.languages) == 2
 
 
 def test_usage(_):
@@ -12,3 +13,11 @@ def test_new_usage(__):
 
 def test_new_usage_with_params(__):
     assert __.text.test_var(var=4) == "test 4"
+
+
+def test_fallback(__):
+    assert __.text.fallback_text == "oops! this translate on en locale"
+
+
+def test_dict(__):
+    assert __.text.dict_example
