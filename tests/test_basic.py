@@ -19,5 +19,9 @@ def test_fallback(__):
     assert __.text.fallback_text == "oops! this translate on en locale"
 
 
+def test_fallback_unknown(__):
+    assert __.text.unknown_text == "text.unknown_text"
+
+
 def test_dict(__):
     assert __.text.dict_example

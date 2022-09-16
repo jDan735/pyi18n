@@ -1,3 +1,4 @@
+import contextlib
 from ..lib.base_class import BaseClass
 
 from ..models.value import TranslateList, TranslateStr, TranslateDict
@@ -21,7 +22,8 @@ class Section(BaseClass):
             setattr(self, key, to_pyi18n_type(value))
 
     def __getattr__(self, name: str) -> TranslateStr | TranslateList | TranslateDict:
-        try:
+        with contextlib.suppress(AttributeError):
             return self.__getattribute__(name)
-        except AttributeError:
-            return self.__pyi18n[self.__pyi18n.fallback][self.__name][name]
+        with contextlib.suppress(AttributeError):
+            return self.__pyi18n[self.__pyi18n.fallback][self.__name].__getattribute__(name)
+        return f"{self.__name}.{name}"
